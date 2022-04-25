@@ -1,4 +1,11 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthAcc } from "./AuthAcc";
+
+
 export const Navbar = () => {
+
+  const {AuthStat, flipAuthStat} = useContext(AuthAcc)
   return (
     <div className="navbar">
       <Link className="nav-home" to="/">
@@ -11,13 +18,15 @@ export const Navbar = () => {
         Admin
       </Link>
       {/* Show Either logout or login based on auth context. DO NOT show both */}
-      <Link className="nav-logout" to="/logout">
+      {AuthStat ? <Link onClick={()=>{flipAuthStat()}}
+       className="nav-logout" to="/logout">
         Logout
       </Link>
-
+         :
       <Link className="nav-login" to="/login">
         Login
       </Link>
+          }
     </div>
   );
 };
