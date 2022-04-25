@@ -9,7 +9,7 @@ export const EmployeeList = () => {
 
   const [PplDetails, setPplDetails] = useState([])
 
-  const {SumEmp, flipSum} = useContext(AuthAcc)
+  const {SumEmp, flipSumEmp} = useContext(AuthAcc)
 
   const navi = useNavigate()
 
@@ -23,7 +23,7 @@ export const EmployeeList = () => {
     // handle success
     console.log(response);
     setPplDetails(response.data)
-    flipSum(response.data.length)
+    flipSumEmp(response.data.length)
   })
   .catch(function (error) {
     // handle error
@@ -38,13 +38,14 @@ export const EmployeeList = () => {
     <div className="list_container">
       {/* On clicking this card anywhere, user goes to user details */}
       {PplDetails.map((e)=>{
-        
-      })}
-      <div className="employee_card">
-        <img className="employee_image" />
-        <span className="employee_name"></span>
-        <span className="employee_title"></span>
+        return <div onClick={()=>{
+          navi(`/employees/${e.id}`)
+        }} className="employee_card">
+        <img src={e.image} className="employee_image" />
+        <span className="employee_name">{e.employee_name}</span>
+        <span className="employee_title">{e.title}</span>
       </div>
+      })}
     </div>
   );
 };
