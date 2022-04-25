@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react/cjs/react.production.min";
+import { useContext } from "react";
 import { AuthAcc } from "./AuthAcc";
 
 
