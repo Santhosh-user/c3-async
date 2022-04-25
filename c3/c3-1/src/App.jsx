@@ -6,12 +6,15 @@ import { Admin } from "./components/Admin";
 // import { ProtectedRoute } from "./components/PrivateRoute";
 import { Navbar } from "./components/Navbar";
 import { Logout } from "./components/Logout";
+import {Route, Routes} from "react-router-dom"
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      {/* <Routes>Routes here</Routes> */}
+      <Routes>
+        <Route path="/login" element={<Login></Login>}/>
+      </Routes>
     </div>
   );
 }
